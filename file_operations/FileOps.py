@@ -6,8 +6,10 @@ def create_file(filename):
         with open(filename, 'w') as f:
             f.write('foo')
             print(f"Successfully created a file {filename}")
+            return True
     except OSError:
         print("Failed to create a file")
+        return False
 
 
 def delete_file(filename):
@@ -29,26 +31,26 @@ def read_file(filename):
             return f.read()
     except FileNotFoundError:
         print(f"Failed to read a file {filename} as it doesn't exist")
-        return None
+        return ''
     except OSError:
         print(f"Failed to read a file {filename}")
-        return None
+        return ''
 
 
 def get_file_metadata(filename):
     try:
         file_stat = os.stat(filename)
-        data_map = {
+        metadata = {
             'size_b': file_stat.st_size,
             'created_on': file_stat.st_ctime,
             'modified_on': file_stat.st_mtime,
             'accessed_on': file_stat.st_atime
         }
-        return data_map
+        return metadata
     except FileNotFoundError:
         print(f"Failed to get metadata of a file {filename} as it doesn't exist")
-        return None
+        return {}
     except OSError:
         print(f"Failed to get metadata of a file {filename}")
-        return None
+        return {}
 

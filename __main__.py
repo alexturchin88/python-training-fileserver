@@ -4,15 +4,16 @@ from file_operations.FileOps import read_file, create_file, get_file_metadata, d
 from utils.Utils import generate_file_name
 
 
-# parser = argparse.ArgumentParser(description='Input parameters')
-# parser.add_argument('port', type=str, help='Port number')
-# parser.add_argument('workdir', type=str, help='Working directory with files')
+parser = argparse.ArgumentParser(description='Input parameters')
+parser.add_argument('port', type=str, help='Port number')
+parser.add_argument('workdir', type=str, help='Working directory with files')
+charset = string.ascii_letters + string.digits
 
 
 def main():
-    # args = parser.parse_args()
-
-    charset = string.ascii_letters + string.digits
+    args = parser.parse_args()
+    port = args.port
+    workdir = args.workdir
 
     test_file = generate_file_name(charset)
 

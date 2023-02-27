@@ -1,7 +1,7 @@
 import argparse
 import string
-from file_operations.FileOps import read_file, create_file, print_metadata, delete_file
-from utils.Utils import generate_file_name
+from file_operations.file_ops import read_file, create_file, print_metadata, delete_file
+from utils.utils import generate_file_name
 from utils.logger import logger
 
 

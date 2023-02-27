@@ -2,7 +2,7 @@ import os
 from utils.logger import logger
 
 
-def create_file(filename: str):
+def create_file(filename: str) -> bool:
     """
     Create a file by provided name
     :param filename: string representation of a filename
@@ -18,7 +18,7 @@ def create_file(filename: str):
         return False
 
 
-def delete_file(filename: str):
+def delete_file(filename: str) -> bool:
     """
     Delete a file by provided filename
     :param filename: string representation of a filename
@@ -36,7 +36,7 @@ def delete_file(filename: str):
         return False
 
 
-def read_file(filename: str):
+def read_file(filename: str) -> str:
     """
     Read a file by provided filename
     :param filename: string representation of a filename
@@ -53,7 +53,7 @@ def read_file(filename: str):
         return ''
 
 
-def get_file_metadata(filename: str):
+def get_file_metadata(filename: str) -> dict:
     """
     Get a map with metadata details of a file by provided filename
     :param filename: string representation of a filename
@@ -76,7 +76,7 @@ def get_file_metadata(filename: str):
         return {}
 
 
-def print_metadata(filename: str):
+def print_metadata(filename: str) -> str:
     """
     Get a human-readable batch of metadata details of a file by its provided name
     :param filename: string representation of a filename

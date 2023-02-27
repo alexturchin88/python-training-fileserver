@@ -55,3 +55,13 @@ def get_file_metadata(filename):
         logger.error(f"Failed to get metadata of a file {filename}")
         return {}
 
+
+def print_metadata(filename):
+    metadata = get_file_metadata(filename)
+    if not metadata:
+        return f"No metadata found for file '{filename}'"
+    output = f"Metadata of a file '{filename}':\n"
+    for k, v in metadata.items():
+        output += f"{k}: '{v}'\n"
+    return output
+

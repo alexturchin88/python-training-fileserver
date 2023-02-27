@@ -1,8 +1,9 @@
 import argparse
 import string
-from file_operations.FileOps import read_file, create_file, get_file_metadata, delete_file
+from file_operations.FileOps import read_file, create_file, print_metadata, delete_file
 from utils.Utils import generate_file_name
 from utils.logger import logger
+
 
 parser = argparse.ArgumentParser(description='Input parameters')
 parser.add_argument('port', type=str, help='Port number')
@@ -20,8 +21,7 @@ def main():
 
     create_file(test_file)
     logger.info(read_file(test_file))
-    for k, v in get_file_metadata(test_file).items():
-        logger.info(f"{k}: '{v}'")
+    logger.info(print_metadata(test_file))
     delete_file(test_file)
 
 

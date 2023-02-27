@@ -1,7 +1,7 @@
-from utils.Utils import generate_file_name
-from file_operations.FileOps import *
 import argparse
 import string
+from file_operations.FileOps import read_file, create_file, get_file_metadata, delete_file
+from utils.Utils import generate_file_name
 
 
 # parser = argparse.ArgumentParser(description='Input parameters')

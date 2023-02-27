@@ -2,7 +2,12 @@ import os
 from utils.logger import logger
 
 
-def create_file(filename):
+def create_file(filename: str):
+    """
+    Create a file by provided name
+    :param filename: string representation of a filename
+    :returns boolean
+    """
     try:
         with open(filename, 'w') as f:
             f.write('foo')
@@ -13,7 +18,12 @@ def create_file(filename):
         return False
 
 
-def delete_file(filename):
+def delete_file(filename: str):
+    """
+    Delete a file by provided filename
+    :param filename: string representation of a filename
+    :returns boolean
+    """
     try:
         os.remove(filename)
         logger.info(f"Deleted file {filename} successfully")
@@ -26,7 +36,12 @@ def delete_file(filename):
         return False
 
 
-def read_file(filename):
+def read_file(filename: str):
+    """
+    Read a file by provided filename
+    :param filename: string representation of a filename
+    :returns text file content
+    """
     try:
         with open(filename, 'r') as f:
             return f.read()
@@ -38,7 +53,12 @@ def read_file(filename):
         return ''
 
 
-def get_file_metadata(filename):
+def get_file_metadata(filename: str):
+    """
+    Get a map with metadata details of a file by provided filename
+    :param filename: string representation of a filename
+    :returns dictionary
+    """
     try:
         file_stat = os.stat(filename)
         metadata = {
@@ -56,7 +76,12 @@ def get_file_metadata(filename):
         return {}
 
 
-def print_metadata(filename):
+def print_metadata(filename: str):
+    """
+    Get a human-readable batch of metadata details of a file by its provided name
+    :param filename: string representation of a filename
+    :returns string
+    """
     metadata = get_file_metadata(filename)
     if not metadata:
         return f"No metadata found for file '{filename}'"

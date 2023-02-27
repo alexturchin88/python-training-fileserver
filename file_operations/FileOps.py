@@ -1,27 +1,28 @@
 import os
+from utils.logger import logger
 
 
 def create_file(filename):
     try:
         with open(filename, 'w') as f:
             f.write('foo')
-            print(f"Successfully created a file {filename}")
+            logger.info(f"Successfully created a file {filename}")
             return True
     except OSError:
-        print("Failed to create a file")
+        logger.error("Failed to create a file")
         return False
 
 
 def delete_file(filename):
     try:
         os.remove(filename)
-        print(f"Deleted file {filename} successfully")
+        logger.info(f"Deleted file {filename} successfully")
         return True
     except FileNotFoundError:
-        print(f"Failed to remove a file {filename} as it doesn't exist")
+        logger.error(f"Failed to remove a file {filename} as it doesn't exist")
         return False
     except OSError:
-        print(f"Failed to remove a file {filename}")
+        logger.error(f"Failed to remove a file {filename}")
         return False
 
 
@@ -30,10 +31,10 @@ def read_file(filename):
         with open(filename, 'r') as f:
             return f.read()
     except FileNotFoundError:
-        print(f"Failed to read a file {filename} as it doesn't exist")
+        logger.error(f"Failed to read a file {filename} as it doesn't exist")
         return ''
     except OSError:
-        print(f"Failed to read a file {filename}")
+        logger.error(f"Failed to read a file {filename}")
         return ''
 
 
@@ -48,9 +49,9 @@ def get_file_metadata(filename):
         }
         return metadata
     except FileNotFoundError:
-        print(f"Failed to get metadata of a file {filename} as it doesn't exist")
+        logger.error(f"Failed to get metadata of a file {filename} as it doesn't exist")
         return {}
     except OSError:
-        print(f"Failed to get metadata of a file {filename}")
+        logger.error(f"Failed to get metadata of a file {filename}")
         return {}
 

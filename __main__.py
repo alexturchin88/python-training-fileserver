@@ -1,7 +1,6 @@
 import argparse
 import os
 import string
-import yaml
 from file_operations.file_ops import read_file, create_file, print_metadata, delete_file
 from utils.utils import generate_file_name, read_config
 from utils.logger import logger

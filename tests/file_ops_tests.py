@@ -18,9 +18,10 @@ def temp_file():
 
 def test_create_file(temp_file):
     """Test that create_file() creates a file with the correct content"""
-    assert create_file(temp_file)
+    content = 'test'
+    assert create_file(temp_file, content)
     with open(temp_file, 'r') as f:
-        assert f.read() == 'foo'
+        assert f.read() == content
 
 
 def test_delete_file():

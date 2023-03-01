@@ -18,8 +18,8 @@ def create_file(filename: str, content: str = '') -> bool:
                 f.write(content)
             logger.info(f"Successfully created a file {filename}")
             return True
-    except OSError:
-        logger.error("Failed to create a file")
+    except OSError as e:
+        logger.error(f"Failed to create a file:\n{e.strerror}")
         return False
 
 

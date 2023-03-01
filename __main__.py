@@ -1,4 +1,5 @@
 import argparse
+import os
 import string
 import yaml
 from file_operations.file_ops import read_file, create_file, print_metadata, delete_file
@@ -22,12 +23,20 @@ def main():
     workdir = args.workdir
     logger.info(f"Starting service on port {port}, working in directory '{workdir}'")
 
-    test_file = generate_file_name(charset)
+    create_file_dir(workdir)
+    test_file = os.path.join(workdir, generate_file_name(charset))
 
-    create_file(test_file)
+    create_file(test_file, 'test content')
     logger.info(read_file(test_file))
     logger.info(print_metadata(test_file, date_format))
     delete_file(test_file)
+
+
+def create_file_dir(dirname: str):
+    try:
+        os.mkdir(dirname)
+    except FileExistsError:
+        pass
 
 
 if __name__ == '__main__':

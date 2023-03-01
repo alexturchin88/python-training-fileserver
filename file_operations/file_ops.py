@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from utils.logger import logger
 
 
@@ -80,10 +81,11 @@ def get_file_metadata(filename: str) -> dict:
         return {}
 
 
-def print_metadata(filename: str) -> str:
+def print_metadata(filename: str, date_format: str) -> str:
     """
     Get a human-readable batch of metadata details of a file by its provided name
     :param filename: string representation of a filename
+    :param date_format: format of the date to be displayed
     :returns string
     """
     metadata = get_file_metadata(filename)
@@ -91,6 +93,7 @@ def print_metadata(filename: str) -> str:
         return f"No metadata found for file '{filename}'"
     output = f"Metadata of a file '{filename}':\n"
     for k, v in metadata.items():
-        output += f"{k}: '{v}'\n"
+        value = datetime.fromtimestamp(v).strftime(date_format) if '.' in str(v) else v
+        output += f"{k}: '{value}'\n"
     return output
 

@@ -2,15 +2,19 @@ import os
 from utils.logger import logger
 
 
-def create_file(filename: str) -> bool:
+def create_file(filename: str, content: str = '') -> bool:
     """
     Create a file by provided name
     :param filename: string representation of a filename
+    :param content: string content of a future file
     :returns boolean
     """
     try:
         with open(filename, 'w') as f:
-            f.write('foo')
+            if not content:
+                f.write('foo')
+            else:
+                f.write(content)
             logger.info(f"Successfully created a file {filename}")
             return True
     except OSError:

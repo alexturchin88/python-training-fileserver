@@ -1,8 +1,9 @@
 import argparse
 import os
 import string
+from configuration.config import Config
 from file_operations.file_ops import read_file, create_file, print_metadata, delete_file
-from utils.utils import generate_file_name, read_config
+from utils.utils import generate_file_name
 from utils.logger import logger
 
 
@@ -11,9 +12,8 @@ parser.add_argument('port', type=str, help='Port number')
 parser.add_argument('workdir', type=str, help='Working directory with files')
 charset = string.ascii_letters + string.digits
 
-config = read_config()
-settings = config['settings']
-date_format = settings['date_format']
+config = Config.get_instance()
+date_format = config.date_format
 
 
 def main():

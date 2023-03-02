@@ -1,0 +1,4 @@
+settings:
+  date_format: '%d.%m.%y %H:%M:%S'
+  file_name_len_min: 5
+  file_name_len_max: 10

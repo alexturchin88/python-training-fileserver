@@ -2,7 +2,7 @@ import argparse
 import os
 import string
 from configuration.config import Config
-from file_operations.file_ops import read_file, create_file, print_metadata, delete_file
+from file_operations.file_ops import FileService, FileServiceEncrypted
 from utils.utils import generate_file_name
 from utils.logger import logger
 
@@ -25,10 +25,20 @@ def main():
     create_file_dir(workdir)
     test_file = os.path.join(workdir, generate_file_name(charset))
 
-    create_file(test_file, 'test content')
-    logger.info(read_file(test_file))
-    logger.info(print_metadata(test_file, date_format))
-    delete_file(test_file)
+    file_ops_simple = FileService()
+    file_ops_crypto = FileServiceEncrypted()
+
+    file_ops_simple.create_file(test_file, 'test content')
+    logger.info(file_ops_simple.read_file(test_file))
+    logger.info(file_ops_simple.print_metadata(test_file, date_format))
+    file_ops_simple.delete_file(test_file)
+
+    logger.info("=========Encrypted operations:=========")
+
+    file_ops_crypto.create_file(test_file, 'test content')
+    logger.info(file_ops_crypto.read_file(test_file))
+    logger.info(file_ops_simple.read_file(test_file))  # should fail due to encrypted data
+    file_ops_crypto.delete_file(test_file)
 
 
 def create_file_dir(dirname: str):

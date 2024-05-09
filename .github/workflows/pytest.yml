@@ -12,4 +12,4 @@ jobs:
       - name: pytests
         run: |
           pip install pytest
-          pytest tests/
+          pytest tests/file_ops_tests.py

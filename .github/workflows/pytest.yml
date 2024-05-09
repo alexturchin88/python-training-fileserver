@@ -10,4 +10,6 @@ jobs:
       - name: Show files
         run: ls -l
       - name: pytests
-        run: pytest tests/
+        run: |
+          pip install requirements.txt
+          pytest tests/
